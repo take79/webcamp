@@ -1,0 +1,5 @@
+h1 投稿編集
+= form_tag update_post_path(@post.id), method: 'patch' do
+  = text_field_tag :title, @post.title
+  = text_area_tag :body, @post.body
+  = submit_tag '保存'
