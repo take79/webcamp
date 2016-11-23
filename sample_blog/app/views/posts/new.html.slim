@@ -4,7 +4,7 @@ p Find me in app/views/posts/new.html.erb
 h1 新規投稿
 = form_tag posts_path do
   | タイトル
-  input type="text" name="title"
+  input type="text" name="post[title]"
   | 本文
-  textarea name="body"
+  textarea name="post[body]"
   input type="submit" value="投稿する"

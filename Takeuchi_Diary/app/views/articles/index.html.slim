@@ -1,0 +1,13 @@
+h4 記事一覧
+table.striped
+  thead.blue.lighten-4
+    tr
+      th タイトル
+  tbody
+  - @articles.each do |article|
+    tr align="right"
+      th 
+        = link_to article.title, article_path(article.id)
+
+br
+= link_to "新規作成", new_article_path

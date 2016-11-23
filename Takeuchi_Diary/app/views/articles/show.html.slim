@@ -1,0 +1,16 @@
+h4 記事詳細
+h5 タイトル
+p
+  = @article.title
+h5 内容
+p
+  = @article.body
+h5 作者
+p
+  = @article.author
+
+= link_to "戻る", articles_path, class: "btn blue lighten-1"
+br
+= link_to "編集", edit_article_path(@article.id), class: "btn blue lighten-1"
+br
+= link_to "削除", article_path(@article.id), method: :delete , class: "btn red lighten-1", "data-confirm" => "本当に削除しますか？"
