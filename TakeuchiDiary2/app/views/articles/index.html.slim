@@ -1,0 +1,34 @@
+h1 Listing articles
+
+table
+  thead
+    tr
+      th Thumbnail
+      th Title
+      th Body
+      th Author
+      th User
+      th
+      th
+      th
+
+  tbody
+    - @articles.each do |article|
+      tr
+        - if article.image?
+          td = image_tag article.image.url
+        - else
+          td 画像がありません
+        td = article.title
+        td = article.body
+        td = article.author
+        td = article.user_id
+        td = render 'articles/tag_list', tag_list: article.interest_list
+        td = link_to 'Show', article
+        td = link_to 'Edit', edit_article_path(article)
+        td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
+= paginate @articles
+
+br
+
+= link_to 'New Article', new_article_path

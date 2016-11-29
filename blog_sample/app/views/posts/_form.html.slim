@@ -1,0 +1,24 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      ul
+        - @post.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :user_id
+    = f.collection_select :user_id, User.all, :id, :id
+  .field
+    = f.label :image
+    = f.file_field :image
+  .field
+    = f.label :interest_list, "興味・関心（カンマ区切り）"
+    = text_field_tag 'post[interest_list]', @post.interest_list.join(',')
+  .actions = f.submit

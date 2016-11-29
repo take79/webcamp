@@ -1,0 +1,26 @@
+h1 Listing posts
+
+table
+  thead
+    tr
+      th Title
+      th Body
+      th
+      th
+      th
+
+  tbody
+    - @posts.each do |post|
+      tr
+        - if post.image?
+          td = image_tag post.image.url
+        - else
+          td 画像がありません
+        td = link_to post.title, post_path(post)
+        td = post.body
+        td = render 'posts/tag_list', tag_list: post.interest_list
+= paginate(@posts)
+
+br
+
+= link_to 'New Post', new_post_path

@@ -1,0 +1,18 @@
+h1 ユーザ情報
+div
+  | email:#{@user.email}
+
+br
+
+table
+  thead
+    tr
+      th title
+      th author
+  tbody
+    - @articles.each do |article|
+      tr
+        td = article.title
+        td = article.author
+= paginate @articles
+
