@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :articles
+  resources :articles do
+    resource :likes, only: [:create, :destroy]
+  end
   root 'articles#index'
   get 'users', to: 'users#index', as: 'users'
   get 'users/:id', to: 'users#show', as: 'user'

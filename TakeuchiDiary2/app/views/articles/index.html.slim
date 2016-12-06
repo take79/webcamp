@@ -24,6 +24,10 @@ table
         td = article.author
         td = article.user_id
         td = render 'articles/tag_list', tag_list: article.interest_list
+        - if article.liked_by? current_user
+          td = link_to "いいね解除", article_likes_path(article), method: :delete
+        - else
+          td = link_to "いいね", article_likes_path(article), method: :post
         td = link_to 'Show', article
         td = link_to 'Edit', edit_article_path(article)
         td = link_to 'Destroy', article, data: { confirm: 'Are you sure?' }, method: :delete
